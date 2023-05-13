@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование пользователя</title>
+</head>
+<body>
+<div th:align="center">
+    <form th:action="@{/users/save}" th:object="${user}" th:method="post">
+
+        <table th:border="0" th:cellpadding="5">
+            <tr>
+                <td>Имя</td>
+                <td><label for="name"></label>
+                    <input type="text" th:field="*{name}" id="name" placeholder="Имя">
+                    <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name error</div>
+                </td>
+            </tr>
+            <tr>
+                <td>Фамилия</td>
+                <td>
+                    <label for="surname"></label>
+                    <input type="text" th:field="*{surname}" id="surname" placeholder="Фамилия">
+                    <div style="color: red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">surname
+                        error
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Электронный адрес</td>
+                <td>
+                    <label for="email"></label>
+                    <input type="email" th:field="*{email}" id="email" placeholder="Электронный адрес">
+                    <div style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">surname error
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Пароль</td>
+                <td>
+                    <label for="password"></label>
+                    <input type="password" th:field="*{password}" id="password" placeholder="Пароль">
+                    <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password
+                        error
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Роли</td>
+                <td>
+                    <label for="role"></label>
+                    <select id="role" name="roles" multiple size="2">
+                        <option th:each="role : ${roles}"
+                                th:value="${role.id}"
+                                th:text="${role.name}"
+                                th:field="*{roles}">
+
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td th:colspan="2"><input type="submit" value="Добавить"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+
+</body>
+</html>
