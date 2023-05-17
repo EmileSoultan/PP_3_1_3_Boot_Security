@@ -39,7 +39,7 @@
                 <td>Пароль</td>
                 <td>
                     <label for="password"></label>
-                    <input type="password" th:field="*{password}" id="password" placeholder="Пароль">
+                    <input type="text" th:field="*{password}" id="password" placeholder="Пароль">
                     <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password
                         error
                     </div>
